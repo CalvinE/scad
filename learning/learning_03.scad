@@ -1,0 +1,29 @@
+$fa=1;
+$fs=0.4;
+//Car body
+resize([60,20,20])
+sphere(r=5);
+//Car top
+resize([30,15,20])
+translate([0,0,3])
+sphere(r=5);
+//Axels
+translate([20,0,0])
+rotate([90,0,0])
+cylinder(h=30,r=1,center=true);
+translate([-20,0,0])
+rotate([90,0,0])
+cylinder(h=30,r=1,center=true);
+//Wheels
+resize([20,5,20])
+translate([-10,-30,0])
+sphere(r=5);
+resize([20,5,20])
+translate([10,-30,0])
+sphere(r=5);
+resize([20,5,20])
+translate([-10,30,0])
+sphere(r=5);
+resize([20,5,20])
+translate([10,30,0])
+sphere(r=5);
