@@ -3,11 +3,11 @@ $fa = 1;
 $fs = 0.4;
 
 // Variables
-surface_height = 10;
+surface_height = 6;
 top_radius = 75;
-rim_width = 10;
-total_height = 100;
-bottom_radius = top_radius * 0.75;
+rim_width = 15;
+total_height = 150;
+bottom_radius = top_radius * 0.7;
 top_opening_radius = top_radius - rim_width;
 difference_cylinder_z_offset = -surface_height;
 slit_x = top_radius * 2 + 1;
@@ -31,17 +31,17 @@ union() {
             // Top / Opening
             difference() {
                 // The 1 in the z axis makes the second cylander cleanly break through the first for the difference
-                translate([0, 0, 1])
+                translate([0, 0, 0.001])
                 cylinder(h = surface_height, r=top_radius, center = true);
                 cylinder(h = surface_height, r = top_opening_radius, center = true);
             }
         
-            translate([0, 0, (total_height / 2)  - 4])
-            cylinder(h = total_height, r1 = top_opening_radius + 0.001, r2 = bottom_radius, center = true);
+            translate([0, 0, (total_height / 2)])
+            cylinder(h = total_height, r1 = top_opening_radius + surface_height, r2 = bottom_radius , center = true);
         }
         // Hollowing the cup
         translate([0, 0, (total_height / 2) + difference_cylinder_z_offset])
-        cylinder(h = total_height, r1 = top_opening_radius, r2 = bottom_radius, center = true);
+        cylinder(h = total_height, r1 = top_opening_radius + 1, r2 = bottom_radius - surface_height, center = true);
         // Slits in the side of the cup  
         make_slits(20, 5);
         
