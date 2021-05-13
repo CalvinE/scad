@@ -33,7 +33,7 @@ union() {
             }
         
             translate([0, 0, total_height / 2])
-            cylinder(h = total_height, r1 = top_opening_radius, r2 = bottom_radius, center = true);
+            cylinder(h = total_height, r1 = top_opening_radius + 0.001, r2 = bottom_radius, center = true);
         }
         // Hollowing the cup
         translate([0, 0, (total_height / 2) + difference_cylinder_z_offset])
