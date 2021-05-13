@@ -3,14 +3,17 @@ $fa = 1;
 $fs = 0.4;
 
 // Variables
-surface_height = 3;
-top_radius = 50;
-top_opening_radius = 40;
-bottom_radius = 35;
+surface_height = 10;
+top_radius = 75;
+rim_width = 10;
 total_height = 100;
+bottom_radius = top_radius * 0.75;
+top_opening_radius = top_radius - rim_width;
 difference_cylinder_z_offset = -surface_height;
 slit_x = top_radius * 2 + 1;
-slit_z = total_height - 20;
+slit_z = total_height * 0.75;
+bottom_hole_radius = bottom_radius * 0.3;
+bottom_hole_offset = (bottom_radius / 2) - (bottom_radius * 0.1);
 
 module make_slits(num_slits, slit_width = 5) {
     angle_increment = 360 / num_slits;
@@ -27,12 +30,13 @@ union() {
         union() {            
             // Top / Opening
             difference() {
+                // The 1 in the z axis makes the second cylander cleanly break through the first for the difference
                 translate([0, 0, 1])
                 cylinder(h = surface_height, r=top_radius, center = true);
                 cylinder(h = surface_height, r = top_opening_radius, center = true);
             }
         
-            translate([0, 0, total_height / 2])
+            translate([0, 0, (total_height / 2)  - 4])
             cylinder(h = total_height, r1 = top_opening_radius + 0.001, r2 = bottom_radius, center = true);
         }
         // Hollowing the cup
@@ -42,6 +46,14 @@ union() {
         make_slits(20, 5);
         
         // Holes in the bottom of the cup
+        translate([-bottom_hole_offset, bottom_hole_offset, total_height])
+        cylinder(h = surface_height * 3, r = bottom_hole_radius, center = true);
+        translate([bottom_hole_offset, -bottom_hole_offset, total_height])
+        cylinder(h = surface_height * 3, r = bottom_hole_radius, center = true);
+        translate([bottom_hole_offset, bottom_hole_offset, total_height])
+        cylinder(h = surface_height * 3, r = bottom_hole_radius, center = true);
+        translate([-bottom_hole_offset, -bottom_hole_offset, total_height])
+        cylinder(h = surface_height * 3, r = bottom_hole_radius, center = true);
         
     }
     
