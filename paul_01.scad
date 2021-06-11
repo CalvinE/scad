@@ -10,7 +10,7 @@ base_height = 0.125 * scale_factor;
 
 fin_width = 1.5 * scale_factor;
 fin_depth = 0.125 * scale_factor;
-fin_height = 0.5 * scale_factor;
+fin_height = 0.75 * scale_factor;
 
 bevel_cylinder_translate_x = (base_width / 2) * 1;
 bevel_cylinder_translate_y = 0;
