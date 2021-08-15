@@ -7,7 +7,7 @@ base_height = 15;
 
 top_radius = 20;
 top_height = 30;
-top_thickness = 1;
+top_thickness = 2;
 
 union() {
     cylinder(h = base_height, r = base_radius, center = false);
