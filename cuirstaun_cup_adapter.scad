@@ -2,11 +2,12 @@
 $fa = 1;
 $fs = 0.4;
 
-base_radius = 10;
-base_height = 15;
+base_radius = (80 / 2);
+base_height = 90;
 
-top_radius = 20;
-top_height = 30;
+top_radius1 = 86;
+top_radius2 = 88;
+top_height = 80;
 top_thickness = 2;
 
 union() {
@@ -14,9 +15,9 @@ union() {
 
     difference() {
         translate([0, 0, base_height - 0.001])
-        cylinder(h = top_height, r = top_radius, center = false);
+        cylinder(h = top_height, r1 = top_radius1 + top_thickness, r2 = top_radius2 + top_thickness, center = false);
 
         translate([0, 0, base_height + 3])
-        cylinder(h = top_height, r = (top_radius - top_thickness), center = false);
+        cylinder(h = top_height, r1 = top_radius1, r2 = top_radius2, center = false);
     }
 }
