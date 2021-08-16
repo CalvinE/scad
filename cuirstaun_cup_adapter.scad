@@ -2,11 +2,16 @@
 $fa = 1;
 $fs = 0.4;
 
-base_radius = (80 / 2);
+base_diameter = 75;
+
+base_radius = (base_diameter / 2);
 base_height = 90;
 
-top_radius1 = 86;
-top_radius2 = 88;
+top_diameter1 = 88;
+top_diameter2 = 90;
+
+top_radius1 = (top_diameter1 / 2);
+top_radius2 = (top_diameter2 / 2);
 top_height = 80;
 top_thickness = 2;
 
