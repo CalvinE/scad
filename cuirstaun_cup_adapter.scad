@@ -5,7 +5,7 @@ $fs = 0.4;
 base_diameter = 75;
 
 base_radius = (base_diameter / 2);
-base_height = 90;
+base_height = 50;
 
 top_diameter1 = 88;
 top_diameter2 = 90;
